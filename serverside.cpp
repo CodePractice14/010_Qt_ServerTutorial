@@ -57,13 +57,13 @@ void ServerSide::readClient()
         in >> str;
         /* (8) Emit our message*/
         emit gotNewMessage(str);
-        /*set the buffer to 0. We empty it */
+        /* (9) set the buffer to 0. We empty it */
         m_nNextBlockSize = 0;
 
-        /* (9) We try to send a message to the client that we recived its package.*/
+        /* (10) We try to send a message to the client that we recived its package.*/
         if(sendToClient(clientSocket, QString("Reply: recieved: [%1]").arg(str)) == -1)
         {
-            /* (10) IF it fails for any reason we log a message*/
+            /* (11) IF it fails for any reason we log a message*/
             qDebug() << "Some error occured";
         }
     }
